@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Verification | Bluestock Fintech</title>
+    <meta name="description" content="Verify your Bluestock Fintech documents including salary slips, offer letters, and certificates.">
+    <link rel="icon" href="https://bluestock.in/static/images/favicon.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top" id="main-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <svg class="brand-icon" width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="8" width="6" height="20" rx="2" fill="#3949ab" transform="skewX(-10)"/>
+                    <rect x="12" y="4" width="6" height="24" rx="2" fill="#3949ab" transform="skewX(-10)"/>
+                    <rect x="22" y="0" width="6" height="28" rx="2" fill="#3949ab" transform="skewX(-10)"/>
+                </svg>
+                <span class="brand-text ms-2">BLUESTOCK<sup class="brand-tm">™</sup><span class="brand-suffix">.in</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="https://bluestock.in/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://bluestock.in/screener/">Screener</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://bluestock.in/market/">
+                            Market <span class="badge-live"><span class="live-dot"></span> Live</span>
+                        </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="https://bluestock.in/developers/">API</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://bluestock.in/careers/">Careers <i class="bi bi-box-arrow-up-right small"></i></a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Blog</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://blog.bluestock.in">blog.bluestock.in</a></li>
+                            <li><a class="dropdown-item" href="https://medium.com/@bluestock.in">bluestock.medium</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About US</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://bluestock.in/contact">Contact</a></li>
+                            <li><a class="dropdown-item" href="https://bluestock.in/about">About</a></li>
+                            <li><a class="dropdown-item" href="https://bluestock.in/licenses">Licenses</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Products</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://bluestock.in/developers/">APIs</a></li>
+                            <li><a class="dropdown-item" href="https://play.google.com/store/apps/details?id=in.bluestock.app">Bluestock App</a></li>
+                            <li><a class="dropdown-item" href="https://bluestock.in">Bluestock Web</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <span class="notification-bell position-relative">
+                            <i class="bi bi-bell"></i>
+                            <span class="notification-badge">3+</span>
+                        </span>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-signin" href="https://play.google.com/store/apps/details?id=in.bluestock.app">Sign in</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="verification-card">
+                <!-- Important Notice -->
+                <div class="alert alert-info-custom alert-dismissible fade show" role="alert" id="important-notice">
+                    <strong class="text-primary">Important</strong> Please note that your documents, such as salary slip, offer letter, and certificates, will only be verified after you successfully join Bluestock Fintech.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <!-- Verification Form -->
+                <h2 class="verification-title">Document Verification System</h2>
+                
+                <div class="form-section">
+                    <label for="docs-id" class="form-label-custom">Docs ID:</label>
+                    <input type="text" class="form-control form-input-custom" id="docs-id" placeholder="Enter docs ID" autocomplete="off">
+                    <div class="text-center mt-4">
+                        <button class="btn btn-verify" id="verify-btn" onclick="verifyDocument()">Verify Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-3 text-muted">Loading just a second...</p>
+            <div class="progress mt-2" style="width: 200px;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" id="loading-progress" style="width: 0%">0%</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-custom">
+                <div class="modal-header border-0">
+                    <div>
+                        <h5 class="modal-title verification-success-title" id="successModalLabel">Document Verification Successful</h5>
+                        <h6 class="verified-doc-subtitle">Verified Document</h6>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="verified-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Name:</span>
+                            <span class="detail-value" id="result-name"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Date:</span>
+                            <span class="detail-value" id="result-date"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Role:</span>
+                            <span class="detail-value" id="result-role"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Duration:</span>
+                            <span class="detail-value" id="result-duration"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Remark:</span>
+                            <span class="detail-value" id="result-remark"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-primary btn-close-modal" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-custom">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>Verification Failed</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="error-code">Error Code BF.AWS.BACKEND.432</h6>
+                    <p class="text-muted">The document ID you entered could not be found in our system. Please check the ID and try again.</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-primary btn-close-modal" data-bs-dismiss="modal">Confirm Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast-notification" id="toast-notification">
+        <div class="toast-header-custom">
+            <svg class="toast-icon" width="24" height="20" viewBox="0 0 40 32" fill="none">
+                <rect x="2" y="8" width="5" height="16" rx="2" fill="#3949ab" transform="skewX(-10)"/>
+                <rect x="10" y="4" width="5" height="20" rx="2" fill="#3949ab" transform="skewX(-10)"/>
+                <rect x="18" y="0" width="5" height="24" rx="2" fill="#3949ab" transform="skewX(-10)"/>
+            </svg>
+            <span class="toast-title">HR: Bluestock Fintech</span>
+            <span class="toast-time">just now</span>
+            <button class="toast-close" onclick="closeToast()">×</button>
+        </div>
+        <div class="toast-body-custom">
+            For 2 Step Verification <a href="#" class="toast-link" onclick="event.preventDefault();">Confirm Now</a>
+        </div>
+    </div>
+
+    <!-- Get Early Access Section -->
+    <section class="early-access-section">
+        <div class="container text-center">
+            <h4 class="early-access-title">Get Early Access</h4>
+            <p class="text-muted">Never-stopping development is the key factor of our company.</p>
+            <div class="input-group early-access-input mx-auto">
+                <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email">
+                <button class="btn btn-primary" type="button">Submit</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <a class="d-flex align-items-center text-decoration-none mb-3" href="#">
+                        <svg width="32" height="26" viewBox="0 0 40 32" fill="none">
+                            <rect x="2" y="8" width="6" height="20" rx="2" fill="#fff" transform="skewX(-10)"/>
+                            <rect x="12" y="4" width="6" height="24" rx="2" fill="#fff" transform="skewX(-10)"/>
+                            <rect x="22" y="0" width="6" height="28" rx="2" fill="#fff" transform="skewX(-10)"/>
+                        </svg>
+                        <span class="footer-brand ms-2">Bluestock Fintech</span>
+                    </a>
+                    <p class="footer-text">Bluestock™ Fintech & Platforms</p>
+                    <p class="footer-text">Phone: <a href="tel:+917038202440" class="footer-link">+91 7038202440</a></p>
+                    <p class="footer-text">Email: <a href="mailto:admin@bluestock.in" class="footer-link">admin@bluestock.in</a></p>
+                    <p class="footer-text small">NISM (SEBI) Registration No: NISM-202400180448</p>
+                    <p class="footer-text small">Registration UDYAM-MH-01-0138001</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-heading">Useful Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://bluestock.in/">Home</a></li>
+                        <li><a href="https://bluestock.in/careers/">Careers</a></li>
+                        <li><a href="https://bluestock.in/market/">Market</a></li>
+                        <li><a href="https://bluestock.in/screener/">Screener</a></li>
+                        <li><a href="https://blog.bluestock.in/">Bluestock Blog</a></li>
+                        <li><a href="https://www.tradingview.com/">Trading View</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-heading">Our Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://bluestock.in/developers/">Developers</a></li>
+                        <li><a href="https://bluestock.in/trust-security">Trust & Security</a></li>
+                        <li><a href="https://bluestock.in/developers/">API</a></li>
+                        <li><a href="https://bluestock.in/disclaimer/">Disclaimer</a></li>
+                        <li><a href="https://bluestock.in/privacy-policy/">Privacy Policy</a></li>
+                        <li><a href="https://bluestock.in/terms-conditions/">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-heading">Follow Us</h5>
+                    <p class="footer-text small">Unlock the future of finance with Bluestock Fintech</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/bluestock-fintech/" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://www.instagram.com/bluestock.in/" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="https://twitter.com/bluestock_in" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="text-center">
+                <p class="footer-copyright">© Copyright & Trademark Registered in India Bluestock™ All Rights Reserved | Fintech Platforms for a Growing India. 🇮🇳</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
